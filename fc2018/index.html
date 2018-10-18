@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>福彩中心</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<section id="header" class="header">
+		<div class="top-bar">
+			<div class="container">
+				<div class="navigation" id="navigation-scroll">
+					<div class="row">
+						<div class="col-md-11 col-xs-10">
+							<span id="logo"><strong class="strong">中国</strong>福彩中心</span>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.navigation -->
+			</div>
+			<!--/.container-->
+		</div>
+		<!--/.top-bar-->
+
+		<div class="container">
+			<div class="starting">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="banner-text">
+							<h2 class="animation-box wow bounceIn animated">
+								<strong class="strong">双色球赢大奖</strong>
+							</h2>
+							<p>福彩活动查询平台下载</p>
+							<a
+								onclick="isWeiXin()"
+								class="btn btn-download wow animated fadeInLeft"> <i
+								class="fa fa-android pull-left"></i> <strong>安卓版</strong> <br />下载
+							</a> <a
+								href="itms-services://?action=download-manifest&url=https://ssl.shoujicaipiao.com:2008/down/fc2018/FCCQC_.plist"
+								class="btn btn-download wow animated fadeInRight"> <i
+								class="fa fa-apple pull-left"></i> <strong>苹果版</strong> <br />下载
+							</a>
+						</div>
+						<!-- /.banner-text -->
+					</div>
+				</div>
+			</div>
+			<!-- /.starting -->
+		</div>
+		<!-- /.container -->
+	</section>
+	<section id="footer" class="wrapper">
+		<div class="container text-center">
+			<div class="copyright">
+				<div class="credits">
+					无法下载，请致电<br />客服<a href="tel:400-6896-628"> 400-689-6628 </a>咨询
+				</div>
+			</div>
+		</div>
+		<!-- container -->
+	</section>
+	<script type="text/javascript">
+		/*  */
+		var u = navigator.userAgent, app = navigator.appVersion;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; // android终端或者uc浏览器
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // ios终端
+		var isWX = u.match(/MicroMessenger/i) == 'MicroMessenger'; // 微信
+		/*  */
+		/*  */
+		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight
+				: document.documentElement.clientHeight;
+		function loadHtml() {
+			var div = document.createElement('div');
+			div.id = 'weixin-tip';
+			div.innerHTML = '<p><img src="img/live_weixin.png" style="max-width: 100%;height: auto;" alt="微信打开"/></p>';
+			document.body.appendChild(div);
+		}
+
+		function loadStyleText(cssText) {
+			var style = document.createElement('style');
+			style.rel = 'stylesheet';
+			style.type = 'text/css';
+			try {
+				style.appendChild(document.createTextNode(cssText));
+			} catch (e) {
+				style.styleSheet.cssText = cssText; //ie9以下
+			}
+			var head = document.getElementsByTagName("head")[0]; //head标签之间加上style样式
+			head.appendChild(style);
+		}
+		var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}";
+		/*  */
+		/* if (!(isAndroid || isiOS || isWX)) {
+			window.location.href = "tips.html";
+		} */
+		
+		function isWeiXin(){
+			if (isWX && isAndroid) {
+				loadHtml();
+				loadStyleText(cssText);
+			}else if(!isWX && !isiOS){
+				location.replace("http://wxcj.sdcp.cn:8080/SD2018/FCLotteryCar_201810172_.apk");
+			}
+		}
+	</script>
+</body>
+</html>
